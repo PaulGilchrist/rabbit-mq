@@ -5,7 +5,7 @@ var amqp = require('amqplib/callback_api');
 
 var args = process.argv.slice(2);
 if (args.length == 0) {
-  console.log("Usage: receive_logs_direct.js [information] [warning] [error]");
+  console.log('Usage: receive_logs_direct.js [information] [warning] [error]');
   process.exit(1);
 }
 amqp.connect('amqp://localhost', (error0, connection) => {
@@ -31,7 +31,7 @@ amqp.connect('amqp://localhost', (error0, connection) => {
         channel.bindQueue(q.queue, exchange, severity);
       });
       channel.consume(q.queue, (msg) => {
-        console.log(" [x] %s: '%s'", msg.fields.routingKey, msg.content.toString());
+        console.log(` [x] ${msg.fields.routingKey}: '${msg.content.toString()}'`);
       }, {
         noAck: true
       });

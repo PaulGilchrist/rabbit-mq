@@ -1,4 +1,4 @@
-// Used with emit_log.js to demonstrate the publish/subscribe pattern
+// Used with emit-log.js to demonstrate the publish/subscribe pattern
 var amqp = require('amqplib/callback_api');
 
 amqp.connect('amqp://localhost', (error0, connection) => {
@@ -19,11 +19,11 @@ amqp.connect('amqp://localhost', (error0, connection) => {
             if (error2) {
                 throw error2;
             }
-            console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
+            console.log(` [*] Waiting for messages in ${q.queue}. To exit press CTRL+C`);
             channel.bindQueue(q.queue, exchange, '');
             channel.consume(q.queue, (msg) => {
                 if (msg.content) {
-                    console.log(" [x] %s", msg.content.toString());
+                    console.log(` [x] ${msg.content.toString()}`);
                 }
             }, {
                 noAck: true

@@ -14,7 +14,7 @@ amqp.connect('amqp://localhost', (error0, connection) => {
             durable: false
         });
         channel.publish(exchange, '', Buffer.from(msg));
-        console.log(" [x] Sent %s", msg);
+        console.log(` [x] Sent ${msg}`);
     });
     setTimeout(() => {
         connection.close();

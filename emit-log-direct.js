@@ -1,6 +1,6 @@
-// ex: node emit_log_direct.js information 'This is just an infomational message'
-// ex: node emit_log_direct.js warning 'This is a warning message'
-// ex: node emit_log_direct.js error 'This is an error message'
+// ex: node emit-log-direct.js information 'This is just an infomational message'
+// ex: node emit-log-direct.js warning 'This is a warning message'
+// ex: node emit-log-direct.js error 'This is an error message'
 var amqp = require('amqplib/callback_api');
 
 amqp.connect('amqp://localhost', (error0, connection) => {
@@ -19,7 +19,7 @@ amqp.connect('amqp://localhost', (error0, connection) => {
       durable: false
     });
     channel.publish(exchange, severity, Buffer.from(msg));
-    console.log(" [x] Sent %s: '%s'", severity, msg);
+    console.log(` [x] Sent ${severity}: '${msg}'`);
   });
   setTimeout(() => {
     connection.close();

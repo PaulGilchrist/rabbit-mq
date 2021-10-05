@@ -8,12 +8,12 @@ amqp.connect('amqp://localhost', (error, connection) => {
             durable: true
         });
         channel.prefetch(1);
-        console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
+        console.log(` [*] Waiting for messages in ${queue}. To exit press CTRL+C`);
         channel.consume(queue, (msg) => {
             var secs = msg.content.toString().split('.').length - 1;
-            console.log(" [x] Received %s", msg.content.toString());
+            console.log(` [x] Received ${msg.content.toString()}`);
             setTimeout(() => {
-                console.log(" [x] Done");
+                console.log(' [x] Done');
                 channel.ack(msg);
             }, secs * 1000);
         }, {

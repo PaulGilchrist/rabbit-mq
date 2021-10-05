@@ -15,7 +15,7 @@ amqp.connect('amqp://localhost', (error0, connection) => {
             durable: false
         });
         channel.sendToQueue(queue, Buffer.from(msg));
-        console.log(" [x] Sent %s", msg);
+        console.log(` [x] Sent ${msg}`);
     });
     setTimeout(() => {
         connection.close();
