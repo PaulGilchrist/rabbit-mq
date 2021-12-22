@@ -1,4 +1,4 @@
-// Used with send.js to demonstrate a simple queue
+// Used with https://github.com/PaulGilchrist/kubernetes-example for monitoring API changes
 var amqp = require('amqplib/callback_api');
 
 amqp.connect('amqp://localhost', (error0, connection) => {
